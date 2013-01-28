@@ -18,7 +18,9 @@ void function() {
 
 			for (key in object) {
 				if (__own__.call(object, key)) {
-					callback.call(context, key, object[key], object);
+					if (callback.call(context, key, object[key], object) === false) {
+						break;
+					}
 				}
 			}
 		};
@@ -124,6 +126,26 @@ void function() {
 
 			this
 				.exec(result, 5)
+				.done();
+		})
+
+		.test('@param { Function }: callback->break', function() {
+			var context = {
+				foo: 2,
+				bar: 3
+			};
+
+			var result = 0;
+
+			Object.forEach(object, function(key, value, object) {
+				result = key
+
+				if (key == 'foo')
+					return false;
+			}, context);
+
+			this
+				.exec(result, 'foo')
 				.done();
 		})
 }();
