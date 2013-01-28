@@ -18,7 +18,7 @@ void function() {
 
 			for (key in object) {
 				if (__own__.call(object, key)) {
-					if (callback.call(context, key, object[key], object) === false) {
+					if (callback.call(context, object[key], key, object) === false) {
 						break;
 					}
 				}
@@ -67,7 +67,7 @@ void function() {
 		.test('@param { Function }: callback->key', function() {
 			var result = '';
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result += key;
 			});
 
@@ -79,7 +79,7 @@ void function() {
 		.test('@param { Function }: callback->value', function() {
 			var result = 0;
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result += value;
 			});
 
@@ -91,7 +91,7 @@ void function() {
 		.test('@param { Function }: callback->key / value', function() {
 			var result = '';
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result += (key + value);
 			});
 
@@ -103,7 +103,7 @@ void function() {
 		.test('@param { Function }: callback->object', function() {
 			var result = false;
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result = 'foo' in object;
 			});
 
@@ -120,7 +120,7 @@ void function() {
 
 			var result = 0;
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result += this[key];
 			}, context);
 
@@ -137,7 +137,7 @@ void function() {
 
 			var result = 0;
 
-			Object.forEach(object, function(key, value, object) {
+			Object.forEach(object, function(value, key, object) {
 				result = key
 
 				if (key == 'foo')
