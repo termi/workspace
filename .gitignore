@@ -1,0 +1,26 @@
+# Ignore rules
+
+*~
+*#*
+._*
+\#*
+
+*.o
+*.a
+*.so
+*.lo
+*.bak
+*.iml
+a.out
+*.out
+.idea
+*.pyc
+*.tmp
+*.bak
+tmp
+*.xmind
+.project
+.settings
+.gitconfig
+.DS_Store
+*/tornado

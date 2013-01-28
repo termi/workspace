@@ -1,0 +1,3 @@
+[submodule "Suitest"]
+	path = lib/Suitest
+	url  = https://github.com/monolithed/Suitest.git
