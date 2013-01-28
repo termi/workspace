@@ -1,4 +1,4 @@
-var Suitest = require('../lib/suitest.js');
+var Suitest = require('../lib/Suitest/suitest.js');
 
 void function() {
 	/**
